@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/home_style.css">
+    <script src="js/home_script.js" defer></script>
+    <title>Peak Performance</title>
+</head>
+<body>
+    <!-- nav bar-->
+    <header>
+        <h1>Peak Performance</h1>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="health-diet.html">Health & diet</a></li>
+            <li><a href="#contactus">Contact Us</a></li>
+        </ul>
+    </header>
+
+    <main>
+
+        <!-- hero page -->
+        <section class="hero" id="hero-section">
+            <div class="hero-container">
+                <h2>Alex Morgan</h2>
+                <p>Certified Personal Trainer & Wellness Coach helping you achieve peak performance and a balanced lifestyle.</p>
+                <div>
+                    <a href="#" class="button-contactme">Contact Me</a>
+                    <a href="#" class="button-programs">Programs</a>
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-btn active" data-slide="0"></button>
+                    <button class="carousel-btn" data-slide="1"></button>
+                    <button class="carousel-btn" data-slide="2"></button>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Training Programs section -->
+        <section class="training-programs">
+            <h3>Training Programs</h3>
+            <div class="training-programs-grid">
+                <div class="training-program-item">
+                    <div class="icon-container">
+                        <img src="images/slim.png" alt="Program One Icon" class="program-icon">
+                    </div>
+                    <h4>Weight Loss Program</h4>
+                    <p>Lose weight effectively with personalized plans that fit your lifestyle and preferences.</p>
+                </div>
+                <div class="training-program-item">
+                    <div class="icon-container">
+                        <img src="images/musclebuilding.png" alt="Program Two Icon" class="program-icon">
+                    </div>
+                    <h4>Muscle Building Program</h4>
+                    <p>Develop lean muscle through customized strength training designed to match your unique goals.</p>
+                </div>
+                <div class="training-program-item">
+                    <div class="icon-container">
+                        <img src="images/wellness-program.png" alt="Program Three Icon" class="program-icon">
+                    </div>
+                    <h4>Wellness Program</h4>
+                    <p>Focus on holistic health with a program designed for mental and physical wellness.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- The Journey section -->
+        <section class="journey">
+            <h3>The Journey</h3>
+            <div class="journey-container">
+                <div class="journey-text">
+                    <p>Your fitness journey begins with a single step, and we're here to guide you through every phase. Whether you're looking to lose weight,
+                        build strength, improve endurance, or simply adopt a healthier lifestyle, our program is designed to meet you where you are and take
+                        you where you want to be.</p>
+                    <br>
+                    <p>From personalized workout plans to nutritional guidance, we focus on creating a holistic approach that supports both your physical and
+                        mental well-being. Along the way, you'll gain the confidence, knowledge, and skills to not only achieve your goals but to maintain them
+                        for life.</p>
+                    <br>
+                    <p>Let us help you discover your full potential, overcome challenges, and embrace a lifestyle of health, strength, and positivity.
+                        Your journey starts today!</p>
+                </div>
+                <div class="journey-image">
+                    <img src="images/journey-image.png" alt="Transformation Journey Image">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials section -->
+        <section class="testimonials">
+            <h3>Testimonials</h3>
+            <div class="testimonial-container">
+                <div class="testimonial-item">
+                    <p>"I achieved my fitness goals in just three months thanks to Alex's amazing coaching and support."</p>
+                    <img src="images/jane-transformed.jpeg" alt="Jane Doe Image">
+                    <p>- Jane Doe</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Alex's programs not only helped me get in shape but also boosted my confidence and energy levels."</p>
+                    <img src="images/Josie-transformed.jpeg" alt="Josie Acevedo Image">
+                    <p>- Josie Acevedo</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"With Alex's guidance, I transformed my body and learned how to maintain a healthy lifestyle."</p>
+                    <img src="images/Garth-transformed.jpeg" alt="Garth Berger Image">
+                    <p>- Garth Berger</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contactus">
+            <h3>Get In Touch / Contact Me</h3>
+            <p>Let’s start your fitness journey together. Reach out to me with any questions or to book your first session!</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h4>Contact Information</h4>
+                    <p><i class="fa fa-envelope"></i> alex.morgan@fitness.com</p>
+                    <p><i class="fa fa-phone"></i> +1 (234) 567-890</p>
+                    <p><i class="fa fa-map-marker"></i> 123 Fitness Lane, Wellness City</p>
+                </div>
+                <form action="#" method="post" class="contact-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name*</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send</button>
+                </form>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>© 2024 Peak Performance. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </main>
+</body>
+</html>

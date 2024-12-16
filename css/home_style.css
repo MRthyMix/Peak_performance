@@ -1,0 +1,429 @@
+:root{
+    --Bittersweet: #ED6A5A;
+    --darkBittersweet: #d12b17;
+    --Lemon-chiffon: #F4F1BB;
+    --Ash-gray: #9BC1BC;
+    --Verdigris: #5CA4A9;
+    --Alabaster: #E6EBE0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: var(--Verdigris);
+    color: var(--Alabaster);
+    min-height: 100vh;
+}
+/* nav bar */
+header{
+    background-color: var(--Bittersweet);
+    color: var(--Alabaster);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+header h1{
+    margin: 0;
+    padding: 1rem 0 1rem 2rem;
+    color: var(--Alabaster);
+}
+
+header ul{
+    list-style-type: none;
+    padding: 0 2rem 0 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+
+}
+header a{
+    color: var(--Alabaster);
+    text-decoration: none;
+}
+header a:hover{
+    color: var(--Lemon-chiffon);
+    text-decoration: underline;
+}
+
+/* main content */
+/* hero content */
+
+.hero {
+    position: relative;
+    background-image: url('../images/fitness_banner.png');
+    background-size: cover;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 10rem;
+    color: var(--Alabaster);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Ensure transition is applied */
+    z-index: 2;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.hero-overlay.fade-in {
+    opacity: 1;
+}
+.hero * {
+    position: relative;
+    z-index: 3; /* Ensure content is above the overlay */
+}
+.hero p {
+    margin-bottom: 2rem;
+}
+
+.button-contactme,
+.button-programs {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid;
+    border-radius: 25px;
+    transition: all 0.3s;
+    margin: 2rem .5rem;
+
+}
+
+.button-contactme {
+    color: var(--Alabaster);
+    background-color: var(--Bittersweet);
+    border-color: var(--Bittersweet);
+}
+
+.button-contactme:hover {
+    background-color: var(--darkBittersweet);
+    border-color: var(--darkBittersweet);
+}
+
+.button-programs {
+    color: black;
+    background-color: var(--Alabaster);
+    border-color: var(--Alabaster);
+}
+
+.button-programs:hover {
+    background-color: var(--darkBittersweet);
+    border-color: var(--darkBittersweet);
+}
+
+/* Carousel Buttons */
+.carousel-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.carousel-btn {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--Alabaster);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover,
+.carousel-btn.active {
+    background-color: var(--Bittersweet);
+}
+
+
+/* Training Programs section */
+.training-programs {
+    background-color: var(--Ash-gray);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.training-programs h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--Alabaster);
+}
+
+.training-programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: start;
+}
+
+.training-program-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+}
+
+.icon-container {
+    margin-bottom: 1rem;
+}
+
+.program-icon {
+    max-width: 50px;
+    margin-bottom: 1rem;
+}
+
+.training-program-item h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.training-program-item p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* The Journey Section */
+.journey {
+    background-color: var(--Ash-gray);
+    color: var(--Alabaster);
+    padding: 3rem;
+    text-align: center;
+}
+
+.journey-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.journey-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin: auto;
+}
+
+.journey-image {
+    flex: 1;
+    max-width: 40%;
+    margin: auto;
+}
+
+.journey-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Testimonials section */
+.testimonials {
+    background-color: var(--Verdigris);
+    color: var(--Alabaster);
+    padding: 2rem;
+    text-align: center;
+}
+.testimonials h3 {
+    margin-bottom: 2rem;
+}
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 7rem;
+}
+.testimonial-item {
+    max-width: 400px;
+    padding: 1rem;
+    background-color: var(--Ash-gray);
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.testimonial-item p {
+    margin: 0.5rem 0;
+}
+.testimonial-item p{
+    color: #333;
+}
+
+
+/* testimonial img resize*/
+.testimonial-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0.5rem auto;
+    display: block;
+    border: 2px solid var(--Ash-gray);
+}
+
+
+
+/* Contact Section */
+.contact-section {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--Bittersweet);
+}
+
+.contact-section p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+.contact-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--Bittersweet);
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.contact-info i {
+    color: #555;
+    margin-right: 0.5rem;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form .form-group label {
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group textarea:focus {
+    border-color: var(--Bittersweet);
+    outline: none;
+}
+
+.contact-form .form-group textarea {
+    height: 120px;
+    resize: none;
+}
+
+.submit-button {
+    background-color: var(--Bittersweet);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--darkBittersweet);
+}
+
+
+
+/* Footer */
+footer {
+    background-color: var(--Bittersweet);
+    color: var(--Alabaster);
+    padding: .5rem;
+    text-align: center;
+
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

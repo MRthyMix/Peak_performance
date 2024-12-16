@@ -1,0 +1,288 @@
+:root{
+    --Bittersweet: #ED6A5A;
+    --darkBittersweet: #d12b17;
+    --Lemon-chiffon: #F4F1BB;
+    --Ash-gray: #9BC1BC;
+    --Verdigris: #5CA4A9;
+    --Alabaster: #E6EBE0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: var(--Ash-gray);
+}
+
+/* nav bar */
+header{
+    background-color: var(--Bittersweet);
+    color: var(--Alabaster);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+header h1{
+    margin: 0;
+    padding: 1rem 0 1rem 2rem;
+    color: var(--Alabaster);
+}
+
+header ul{
+    list-style-type: none;
+    padding: 0 2rem 0 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+
+}
+header a{
+    color: var(--Alabaster);
+    text-decoration: none;
+}
+header a:hover{
+    color: var(--Lemon-chiffon);
+    text-decoration: underline;
+}
+
+/* Blogs Section */
+.blogs-section {
+    padding: 4rem 2rem;
+    background-color: var(--Ash-gray);
+    text-align: center;
+}
+
+.blogs-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--Alabaster);
+}
+
+.blogs-section h2 span {
+    color: var(--Bittersweet);
+}
+
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.blog-item {
+    background-color: var(--Lemon-chiffon);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+}
+
+.blog-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blog-content {
+    padding: 1rem;
+}
+
+.blog-content .category {
+    font-size: 0.9rem;
+    color: var(--Ash-gray);
+    margin-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--Verdigris);
+}
+
+.blog-content .author {
+    font-size: 0.85rem;
+    color: var(--Ash-gray);
+}
+
+/* Hover Animation for Blog Items */
+.blog-item {
+    background-color: var(--Lemon-chiffon);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.blog-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: var(--Alabaster);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease;
+    padding: 1rem;
+}
+
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--Bittersweet);
+}
+
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--Bittersweet);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Modal Header weth Background Image */
+.modal-header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    color: var(--Alabaster);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-header h2 {
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 5px;
+}
+/* Modal Body */
+.modal-body {
+    padding: 2rem;
+    font-size: 1rem;
+    color: var(--Ash-gray);
+    text-align: left;
+    line-height: 1.6;
+}
+.modal-body p {
+    margin-bottom: 1rem;
+    color: var(--Verdigris);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background-color: var(--Verdigris);
+    color: var(--Alabaster);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 900px;
+}
+
+.newsletter-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 4px;
+    width: 60%;
+    max-width: 400px;
+}
+
+.newsletter-form button {
+    padding: 0.8rem 2rem;
+    background-color: var(--Bittersweet);
+    color: var(--Alabaster);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--darkBittersweet);
+}
+
+/* Footer */
+footer {
+    background-color: var(--Bittersweet);
+    color: var(--Alabaster);
+    padding: .5rem;
+    text-align: center;
+
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.social-icons a {
+    margin: 0 0.5rem;
+    color: var(--Alabaster);
+    font-size: 1.5rem;
+}
+.social-icons a:hover {
+    color: var(--Lemon-chiffon);
+}
+
+
