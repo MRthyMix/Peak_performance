@@ -29,7 +29,6 @@ The application is deployed and accessible online via Vercel.
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **APIs**: Nutritionix API for nutrition data
 - **Architecture**: Static web application with modular CSS and JavaScript
-- **Responsive Design**: Mobile-first approach with flexible layouts
 
 ## 📱 Features Overview
 
@@ -53,10 +52,6 @@ The application is deployed and accessible online via Vercel.
 - Health and lifestyle articles
 - Modal-based content display
 - Category-based organization
-
-## 📄 License
-
-This project is part of a web development course portfolio. All rights reserved.
 
 ---
 
