@@ -12,8 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const appId = '88819777';
-            const appKey = '29777d075e02bb39a00e3dbc23b503bb';
+            // Import API credentials from config file
+            const { NUTRITIONIX_APP_ID: appId, NUTRITIONIX_APP_KEY: appKey } = window.API_CONFIG || {};
+            
+            if (!appId || !appKey) {
+                throw new Error("API credentials not found. Please check your configuration.");
+            }
 
             const response = await fetch(`https://trackapi.nutritionix.com/v2/natural/nutrients`, {
                 method: "POST",
