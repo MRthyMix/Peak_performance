@@ -8,7 +8,7 @@ A responsive fitness and wellness web application designed to support users in a
 
 The application is deployed and accessible online via Vercel.
 
-## 🌟 Features
+## Features
 
 ### Core Functionality
 - **Responsive Design**: Optimized for desktop
@@ -24,13 +24,13 @@ The application is deployed and accessible online via Vercel.
 - **Autocomplete Search**: Enhanced search functionality for health and nutrition topics
 - **Responsive Navigation**: Consistent navigation across all pages
 
-## 🚀 Technologies Used
+## Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **APIs**: Nutritionix API for nutrition data
 - **Architecture**: Static web application with modular CSS and JavaScript
 
-## 📱 Features Overview
+## Features Overview
 
 ### Home Page (`index.html`)
 - Hero section with rotating fitness banners
