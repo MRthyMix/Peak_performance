@@ -1,6 +1,9 @@
 # API Configuration (contains sensitive credentials)
 js/config.js
 
+# Claude documentation
+CLAUDE.md
+
 # Environment variables
 .env
 .env.local
