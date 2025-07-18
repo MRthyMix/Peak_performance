@@ -11,7 +11,7 @@ The application is deployed and accessible online via Vercel.
 ## 🌟 Features
 
 ### Core Functionality
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Responsive Design**: Optimized for desktop
 - **Multi-page Architecture**: Home, Programs, Blogs, and Health & Diet sections
 - **Interactive Hero Carousel**: Auto-advancing image carousel with manual controls
 - **Real-time Nutrition Tracking**: Integrated Nutritionix API for instant food nutrition data
