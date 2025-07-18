@@ -31,18 +31,6 @@ The application is deployed and accessible online via Vercel.
 - **Architecture**: Static web application with modular CSS and JavaScript
 - **Responsive Design**: Mobile-first approach with flexible layouts
 
-## 🔧 Configuration
-
-### API Integration
-The application uses the Nutritionix API for nutrition data. To use your own API credentials:
-
-1. Sign up at [Nutritionix Developer Portal](https://www.nutritionix.com/business/api)
-2. Replace the credentials in `js/nutrition.js`:
-   ```javascript
-   const appId = 'YOUR_APP_ID';
-   const appKey = 'YOUR_APP_KEY';
-   ```
-
 ## 📱 Features Overview
 
 ### Home Page (`index.html`)
@@ -65,37 +53,6 @@ The application uses the Nutritionix API for nutrition data. To use your own API
 - Health and lifestyle articles
 - Modal-based content display
 - Category-based organization
-
-## 🎨 Design Features
-
-- **Mobile-First Design**: Responsive across all device sizes
-- **Professional Typography**: Clean, readable font choices
-- **Intuitive Navigation**: Consistent header navigation
-- **Visual Hierarchy**: Clear content organization
-- **Interactive Elements**: Hover effects and smooth transitions
-
-## 🔄 Development Timeline
-
-**December 2024** - Web Development Course Project
-- Developed responsive web application using HTML, CSS, and JavaScript
-- Integrated interactive components including carousel and modals
-- Implemented dynamic nutrition tracking with Nutritionix API
-- Created autocomplete search functionality
-
-## 🚀 Future Enhancements
-
-- User authentication system
-- Workout tracking functionality
-- Progress dashboard
-- Community features
-- Mobile app version
-
-## 📞 Contact
-
-**Alex Morgan** - Certified Personal Trainer & Wellness Coach
-- Email: alex.morgan@fitness.com
-- Phone: +1 (234) 567-890
-- Location: 123 Fitness Lane, Wellness City
 
 ## 📄 License
 
