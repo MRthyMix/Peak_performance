@@ -1,50 +1,110 @@
 'use strict';
 
+const USDA_BASE = "https://api.nal.usda.gov/fdc/v1";
+
+// Nutrient IDs used by USDA FoodData Central
+const NUTRIENT_IDS = {
+    calories: 1008,
+    protein:  1003,
+    fat:      1004,
+    carbs:    1005
+};
+
+function getNutrientValue(foodNutrients, id) {
+    const match = foodNutrients.find(n => n.nutrientId === id);
+    return match ? match.value.toFixed(1) : "N/A";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const fetchNutritionButton = document.getElementById("fetchNutrition");
+    const foodInput       = document.getElementById("foodInput");
+    const fetchBtn        = document.getElementById("fetchNutrition");
     const nutritionResult = document.getElementById("nutritionResult");
 
-    fetchNutritionButton.addEventListener("click", async () => {
-        const foodItem = document.getElementById("foodInput").value.trim();
-        if (!foodItem) {
+    // --- Autocomplete ---
+    const suggestionList = document.createElement("ul");
+    suggestionList.className = "autocomplete-list";
+    foodInput.parentNode.style.position = "relative";
+    foodInput.parentNode.appendChild(suggestionList);
+
+    let debounceTimer;
+
+    foodInput.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        const query = foodInput.value.trim();
+        suggestionList.innerHTML = "";
+
+        if (query.length < 2) return;
+
+        debounceTimer = setTimeout(async () => {
+            const apiKey = (window.API_CONFIG || {}).USDA_API_KEY;
+            if (!apiKey) return;
+
+            try {
+                const res = await fetch(
+                    `${USDA_BASE}/foods/search?query=${encodeURIComponent(query)}&pageSize=6&api_key=${apiKey}`
+                );
+                if (!res.ok) return;
+                const data = await res.json();
+
+                (data.foods || []).forEach(food => {
+                    const li = document.createElement("li");
+                    li.textContent = food.description;
+                    li.addEventListener("click", () => {
+                        foodInput.value = food.description;
+                        suggestionList.innerHTML = "";
+                    });
+                    suggestionList.appendChild(li);
+                });
+            } catch (_) { /* silently ignore autocomplete errors */ }
+        }, 300);
+    });
+
+    document.addEventListener("click", e => {
+        if (!suggestionList.contains(e.target) && e.target !== foodInput) {
+            suggestionList.innerHTML = "";
+        }
+    });
+
+    // --- Nutrition lookup ---
+    fetchBtn.addEventListener("click", async () => {
+        const query = foodInput.value.trim();
+        suggestionList.innerHTML = "";
+
+        if (!query) {
             nutritionResult.innerHTML = "<p>Please enter a food item.</p>";
             return;
         }
 
+        const apiKey = (window.API_CONFIG || {}).USDA_API_KEY;
+        if (!apiKey) {
+            nutritionResult.innerHTML = "<p>API key not found. Please check js/config.js.</p>";
+            return;
+        }
+
+        nutritionResult.innerHTML = "<p>Loading...</p>";
+
         try {
-            // Import API credentials from config file
-            const { NUTRITIONIX_APP_ID: appId, NUTRITIONIX_APP_KEY: appKey } = window.API_CONFIG || {};
-            
-            if (!appId || !appKey) {
-                throw new Error("API credentials not found. Please check your configuration.");
+            const res = await fetch(
+                `${USDA_BASE}/foods/search?query=${encodeURIComponent(query)}&pageSize=1&api_key=${apiKey}`
+            );
+            if (!res.ok) throw new Error("Failed to fetch nutrition data.");
+
+            const data = await res.json();
+            const food = (data.foods || [])[0];
+
+            if (!food) {
+                nutritionResult.innerHTML = "<p>No data found for that food item.</p>";
+                return;
             }
 
-            const response = await fetch(`https://trackapi.nutritionix.com/v2/natural/nutrients`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-app-id": appId,
-                    "x-app-key": appKey
-                },
-                body: JSON.stringify({ query: foodItem })
-            });
-
-            if (!response.ok) throw new Error("Failed to fetch nutrition data.");
-
-            const data = await response.json();
-
-            if (data.foods && data.foods.length > 0) {
-                const food = data.foods[0];
-                nutritionResult.innerHTML = `
-                    <p><strong>${food.food_name} Nutrition Info:</strong></p>
-                    <p>Calories: ${food.nf_calories} kcal</p>
-                    <p>Protein: ${food.nf_protein} g</p>
-                    <p>Fat: ${food.nf_total_fat} g</p>
-                    <p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>
-                `;
-            } else {
-                nutritionResult.innerHTML = "<p>No data available for the entered food item.</p>";
-            }
+            const nutrients = food.foodNutrients || [];
+            nutritionResult.innerHTML = `
+                <p><strong>${food.description} Nutrition Info:</strong></p>
+                <p>Calories: ${getNutrientValue(nutrients, NUTRIENT_IDS.calories)} kcal</p>
+                <p>Protein: ${getNutrientValue(nutrients, NUTRIENT_IDS.protein)} g</p>
+                <p>Fat: ${getNutrientValue(nutrients, NUTRIENT_IDS.fat)} g</p>
+                <p>Carbohydrates: ${getNutrientValue(nutrients, NUTRIENT_IDS.carbs)} g</p>
+            `;
         } catch (error) {
             nutritionResult.innerHTML = `<p>Error: ${error.message}</p>`;
         }
