@@ -1,6 +1,6 @@
 'use strict';
 
-const USDA_BASE = "https://api.nal.usda.gov/fdc/v1";
+const USDA_BASE = "/api/nutrition";
 
 // Nutrient IDs used by USDA FoodData Central
 const NUTRIENT_IDS = {
@@ -36,12 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (query.length < 2) return;
 
         debounceTimer = setTimeout(async () => {
-            const apiKey = (window.API_CONFIG || {}).USDA_API_KEY;
-            if (!apiKey) return;
-
             try {
                 const res = await fetch(
-                    `${USDA_BASE}/foods/search?query=${encodeURIComponent(query)}&pageSize=6&api_key=${apiKey}`
+                    `${USDA_BASE}?query=${encodeURIComponent(query)}&pageSize=6`
                 );
                 if (!res.ok) return;
                 const data = await res.json();
@@ -75,17 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const apiKey = (window.API_CONFIG || {}).USDA_API_KEY;
-        if (!apiKey) {
-            nutritionResult.innerHTML = "<p>API key not found. Please check js/config.js.</p>";
-            return;
-        }
-
         nutritionResult.innerHTML = "<p>Loading...</p>";
 
         try {
             const res = await fetch(
-                `${USDA_BASE}/foods/search?query=${encodeURIComponent(query)}&pageSize=1&api_key=${apiKey}`
+                `${USDA_BASE}?query=${encodeURIComponent(query)}&pageSize=1`
             );
             if (!res.ok) throw new Error("Failed to fetch nutrition data.");
 
