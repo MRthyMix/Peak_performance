@@ -1,58 +1,75 @@
-# Peak Performance Web Application
+# Peak Performance
 
-A responsive fitness and wellness web application designed to support users in achieving their health and fitness goals. Built with modern web technologies and integrated with real-time nutrition data APIs.
+A responsive fitness and wellness web application designed to help users achieve their health and fitness goals. Built with vanilla HTML, CSS, and JavaScript, with real-time nutrition data powered by the USDA FoodData Central API.
 
-## 🌐 Live Demo
+## Live Demo
 
-**[View Live Application](https://peak-performance-lilac.vercel.app)**
+**[peak-performance-lilac.vercel.app](https://peak-performance-lilac.vercel.app)**
 
-The application is deployed and accessible online via Vercel.
+## Pages
+
+| Page | Description |
+|------|-------------|
+| `index.html` | Home — hero carousel, program overview, testimonials, contact form |
+| `programs.html` | Weight loss, muscle building, and wellness program details |
+| `health-diet.html` | Nutrition lookup tool with live food search and autocomplete |
+| `blogs.html` | Health and lifestyle articles with modal-based reading view |
 
 ## Features
 
-### Core Functionality
-- **Responsive Design**: Optimized for desktop
-- **Multi-page Architecture**: Home, Programs, Blogs, and Health & Diet sections
-- **Interactive Hero Carousel**: Auto-advancing image carousel with manual controls
-- **Real-time Nutrition Tracking**: Integrated Nutritionix API for instant food nutrition data
-- **Blog Modal System**: Interactive blog articles with detailed content display
-- **Contact Form**: Professional contact form for client inquiries
+- **Hero Carousel** — 3-banner auto-advancing slideshow (5s interval), pauses on hover, manual dot controls
+- **Nutrition Lookup** — Search any food item and get calories, protein, fat, and carbohydrates from the USDA database
+- **Food Autocomplete** — Live suggestions as you type in the nutrition search bar (debounced, shows up to 6 results)
+- **Blog Modals** — Click any article card to read the full post in an overlay modal
+- **Hamburger Menu** — Collapsible nav for smaller screens
 
-### Interactive Components
-- **Hero Section Carousel**: 5-second auto-advance with hover pause functionality
-- **Nutrition Lookup Tool**: Real-time API integration for food nutrition information
-- **Autocomplete Search**: Enhanced search functionality for health and nutrition topics
-- **Responsive Navigation**: Consistent navigation across all pages
+## Tech Stack
 
-## Technologies Used
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+) — no frameworks
+- **API**: USDA FoodData Central (proxied via Vercel serverless function)
+- **Hosting**: Vercel
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **APIs**: Nutritionix API for nutrition data
-- **Architecture**: Static web application with modular CSS and JavaScript
+## Project Structure
 
-## Features Overview
+```
+Peak_performance/
+├── index.html
+├── programs.html
+├── health-diet.html
+├── blogs.html
+├── css/
+│   ├── home_style.css
+│   ├── health-diet_style.css
+│   ├── programs_style.css
+│   └── blogs_style.css
+├── js/
+│   ├── home_script.js       # Hero carousel
+│   ├── nutrition.js         # Nutrition lookup + food autocomplete
+│   ├── autocomplete.js      # Blog search bar autocomplete
+│   ├── blog_script.js       # Blog modal open/close
+│   ├── hamburger_menu.js    # Mobile nav toggle
+│   └── config.js            # API key (gitignored — local dev only)
+├── api/
+│   └── nutrition.js         # Vercel serverless function (proxies USDA API)
+└── images/
+```
 
-### Home Page (`index.html`)
-- Hero section with rotating fitness banners
-- Training program overview
-- Client testimonials
-- Contact information and form
+## Local Development
 
-### Programs Page (`programs.html`)
-- Weight Loss Program details
-- Muscle Building Program information
-- Wellness Program overview
+1. Get a free USDA API key at [fdc.nal.usda.gov/api-guide.html](https://fdc.nal.usda.gov/api-guide.html)
+2. Create `js/config.js` (already gitignored):
+   ```js
+   window.API_CONFIG = {
+       USDA_API_KEY: "your-key-here"
+   };
+   ```
+3. Open `index.html` in your browser, or use the **Live Server** VS Code extension
 
-### Health & Diet Page (`health-diet.html`)
-- Nutrition education content
-- Real-time food nutrition lookup
-- Search functionality for health topics
+> For the nutrition feature to work locally without a server, the key in `config.js` is used directly. On Vercel, the key lives in environment variables and is never exposed to the client.
 
-### Blogs Page (`blogs.html`)
-- Health and lifestyle articles
-- Modal-based content display
-- Category-based organization
+## Deploying to Vercel
 
----
-
-*Built with passion for fitness and wellness. Helping people achieve peak performance through technology.*
+1. Push the repo to GitHub
+2. Import the project in [vercel.com](https://vercel.com)
+3. Add an environment variable: `USDA_API_KEY` = your key
+4. Deploy — the `/api/nutrition` serverless function handles all API calls server-side
