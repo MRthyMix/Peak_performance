@@ -23,8 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Autocomplete ---
     const suggestionList = document.createElement("ul");
     suggestionList.className = "autocomplete-list";
-    foodInput.parentNode.style.position = "relative";
-    foodInput.parentNode.appendChild(suggestionList);
+
+    // Wrap the input in a relative div so the list anchors below it
+    const inputWrapper = document.createElement("div");
+    inputWrapper.className = "food-input-wrapper";
+    foodInput.parentNode.insertBefore(inputWrapper, foodInput);
+    inputWrapper.appendChild(foodInput);
+    inputWrapper.appendChild(suggestionList);
 
     let debounceTimer;
 

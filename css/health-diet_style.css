@@ -159,12 +159,23 @@ header a:hover{
 
 
 /* Autocomplete List */
+.food-input-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.food-input-wrapper input {
+    width: 100%;
+}
+
 .autocomplete-list {
     position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     background-color: var(--Alabaster);
     border-radius: 4px;
-    width: calc(100% - 1.6rem);
-    margin-top: 0.5rem;
+    margin-top: 2px;
     z-index: 1000;
     list-style: none;
     padding: 0;
