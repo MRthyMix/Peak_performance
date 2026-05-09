@@ -4,7 +4,7 @@ A responsive fitness and wellness web application designed to help users achieve
 
 ## Live Demo
 
-**[peak-performance-lilac.vercel.app](https://peak-lemon.vercel.app/)**
+**[https://peak-lemon.vercel.app/](https://peak-lemon.vercel.app/)**
 
 ## Pages
 
