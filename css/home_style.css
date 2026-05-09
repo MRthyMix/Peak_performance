@@ -1,10 +1,13 @@
 :root{
-    --Bittersweet: #ED6A5A;
-    --darkBittersweet: #d12b17;
-    --Lemon-chiffon: #F4F1BB;
-    --Ash-gray: #9BC1BC;
-    --Verdigris: #5CA4A9;
-    --Alabaster: #E6EBE0;
+    --primary: #0F1B2D;
+    --primary-light: #1E3455;
+    --accent: #F59E0B;
+    --accent-dark: #D97706;
+    --bg-light: #F5F7FA;
+    --bg-section: #EAECF0;
+    --text-dark: #1A1A1A;
+    --text-muted: #666666;
+    --white: #FFFFFF;
 }
 *{
     margin: 0;
@@ -14,14 +17,14 @@
 
 body{
     font-family: Arial, sans-serif;
-    background-color: var(--Verdigris);
-    color: var(--Alabaster);
+    background-color: var(--white);
+    color: var(--text-dark);
     min-height: 100vh;
 }
 /* nav bar */
 header{
-    background-color: var(--Bittersweet);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +33,7 @@ header{
 header h1{
     margin: 0;
     padding: 1rem 0 1rem 2rem;
-    color: var(--Alabaster);
+    color: var(--white);
 }
 
 header ul{
@@ -43,11 +46,11 @@ header ul{
 
 }
 header a{
-    color: var(--Alabaster);
+    color: var(--white);
     text-decoration: none;
 }
 header a:hover{
-    color: var(--Lemon-chiffon);
+    color: var(--accent);
     text-decoration: underline;
 }
 
@@ -56,15 +59,30 @@ header a:hover{
 
 .hero {
     position: relative;
-    background-image: url('../images/fitness_banner.png');
-    background-size: cover;
     height: 75vh;
     display: flex;
     align-items: center;
     justify-content: left;
     padding-left: 10rem;
-    color: var(--Alabaster);
+    color: var(--white);
     overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    z-index: 1;
+}
+
+.hero-slide.active {
+    opacity: 1;
 }
 
 .hero::before {
@@ -75,34 +93,12 @@ header a:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.hero * {
-    position: relative;
     z-index: 2;
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out; /* Ensure transition is applied */
-    z-index: 2;
-    pointer-events: none; /* Allow clicks to pass through */
-}
-
-.hero-overlay.fade-in {
-    opacity: 1;
-}
-.hero * {
+.hero-container {
     position: relative;
-    z-index: 3; /* Ensure content is above the overlay */
+    z-index: 3;
 }
 .hero p {
     margin-bottom: 2rem;
@@ -120,25 +116,26 @@ header a:hover{
 }
 
 .button-contactme {
-    color: var(--Alabaster);
-    background-color: var(--Bittersweet);
-    border-color: var(--Bittersweet);
+    color: var(--white);
+    background-color: var(--accent);
+    border-color: var(--accent);
 }
 
 .button-contactme:hover {
-    background-color: var(--darkBittersweet);
-    border-color: var(--darkBittersweet);
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
 }
 
 .button-programs {
-    color: black;
-    background-color: var(--Alabaster);
-    border-color: var(--Alabaster);
+    color: var(--primary);
+    background-color: var(--white);
+    border-color: var(--white);
 }
 
 .button-programs:hover {
-    background-color: var(--darkBittersweet);
-    border-color: var(--darkBittersweet);
+    background-color: var(--bg-section);
+    border-color: var(--bg-section);
+    color: var(--accent);
 }
 
 /* Carousel Buttons */
@@ -154,20 +151,20 @@ header a:hover{
     height: 10px;
     border: none;
     border-radius: 50%;
-    background-color: var(--Alabaster);
+    background-color: rgba(255,255,255,0.5);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .carousel-btn:hover,
 .carousel-btn.active {
-    background-color: var(--Bittersweet);
+    background-color: var(--accent);
 }
 
 
 /* Training Programs section */
 .training-programs {
-    background-color: var(--Ash-gray);
+    background-color: var(--bg-light);
     padding: 3rem 1rem;
     text-align: center;
 }
@@ -175,7 +172,7 @@ header a:hover{
 .training-programs h3 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: var(--Alabaster);
+    color: var(--primary);
 }
 
 .training-programs-grid {
@@ -218,8 +215,8 @@ header a:hover{
 
 /* The Journey Section */
 .journey {
-    background-color: var(--Ash-gray);
-    color: var(--Alabaster);
+    background-color: var(--white);
+    color: var(--text-dark);
     padding: 3rem;
     text-align: center;
 }
@@ -231,13 +228,18 @@ header a:hover{
     gap: 2rem;
 }
 
+.journey h3 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
 .journey-text {
     flex: 1;
     max-width: 50%;
     text-align: left;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #333;
+    color: var(--text-dark);
     margin: auto;
 }
 
@@ -256,8 +258,8 @@ header a:hover{
 
 /* Testimonials section */
 .testimonials {
-    background-color: var(--Verdigris);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     padding: 2rem;
     text-align: center;
 }
@@ -272,16 +274,16 @@ header a:hover{
 .testimonial-item {
     max-width: 400px;
     padding: 1rem;
-    background-color: var(--Ash-gray);
-    color: black;
+    background-color: var(--primary-light);
+    color: var(--white);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .testimonial-item p {
     margin: 0.5rem 0;
 }
 .testimonial-item p{
-    color: #333;
+    color: var(--bg-light);
 }
 
 
@@ -293,7 +295,7 @@ header a:hover{
     object-fit: cover;
     margin: 0.5rem auto;
     display: block;
-    border: 2px solid var(--Ash-gray);
+    border: 2px solid var(--accent);
 }
 
 
@@ -312,7 +314,7 @@ header a:hover{
 .contact-section h3 {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
-    color: var(--Bittersweet);
+    color: var(--accent);
 }
 
 .contact-section p {
@@ -340,7 +342,7 @@ header a:hover{
 .contact-info h4 {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
-    color: var(--Bittersweet);
+    color: var(--primary);
 }
 
 .contact-info p {
@@ -387,7 +389,7 @@ header a:hover{
 
 .contact-form .form-group input:focus,
 .contact-form .form-group textarea:focus {
-    border-color: var(--Bittersweet);
+    border-color: var(--accent);
     outline: none;
 }
 
@@ -397,8 +399,8 @@ header a:hover{
 }
 
 .submit-button {
-    background-color: var(--Bittersweet);
-    color: white;
+    background-color: var(--accent);
+    color: var(--white);
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
     border: none;
@@ -408,15 +410,15 @@ header a:hover{
 }
 
 .submit-button:hover {
-    background-color: var(--darkBittersweet);
+    background-color: var(--accent-dark);
 }
 
 
 
 /* Footer */
 footer {
-    background-color: var(--Bittersweet);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     padding: .5rem;
     text-align: center;
 

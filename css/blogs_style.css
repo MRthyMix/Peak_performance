@@ -1,10 +1,13 @@
 :root{
-    --Bittersweet: #ED6A5A;
-    --darkBittersweet: #d12b17;
-    --Lemon-chiffon: #F4F1BB;
-    --Ash-gray: #9BC1BC;
-    --Verdigris: #5CA4A9;
-    --Alabaster: #E6EBE0;
+    --primary: #0F1B2D;
+    --primary-light: #1E3455;
+    --accent: #F59E0B;
+    --accent-dark: #D97706;
+    --bg-light: #F5F7FA;
+    --bg-section: #EAECF0;
+    --text-dark: #1A1A1A;
+    --text-muted: #666666;
+    --white: #FFFFFF;
 }
 *{
     margin: 0;
@@ -14,13 +17,21 @@
 
 body{
     font-family: Arial, sans-serif;
-    background-color: var(--Ash-gray);
+    background-color: var(--white);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 /* nav bar */
 header{
-    background-color: var(--Bittersweet);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,9 +40,8 @@ header{
 header h1{
     margin: 0;
     padding: 1rem 0 1rem 2rem;
-    color: var(--Alabaster);
+    color: var(--white);
 }
-
 header ul{
     list-style-type: none;
     padding: 0 2rem 0 0;
@@ -39,32 +49,31 @@ header ul{
     display: flex;
     gap: 1rem;
     text-decoration: none;
-
 }
 header a{
-    color: var(--Alabaster);
+    color: var(--white);
     text-decoration: none;
 }
 header a:hover{
-    color: var(--Lemon-chiffon);
+    color: var(--accent);
     text-decoration: underline;
 }
 
 /* Blogs Section */
 .blogs-section {
     padding: 4rem 2rem;
-    background-color: var(--Ash-gray);
+    background-color: var(--bg-light);
     text-align: center;
 }
 
 .blogs-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--Alabaster);
+    color: var(--primary);
 }
 
 .blogs-section h2 span {
-    color: var(--Bittersweet);
+    color: var(--accent);
 }
 
 .blogs-grid {
@@ -75,11 +84,13 @@ header a:hover{
 }
 
 .blog-item {
-    background-color: var(--Lemon-chiffon);
+    background-color: var(--white);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .blog-item img {
@@ -94,30 +105,19 @@ header a:hover{
 
 .blog-content .category {
     font-size: 0.9rem;
-    color: var(--Ash-gray);
+    color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
 
 .blog-content h3 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    color: var(--Verdigris);
+    color: var(--primary);
 }
 
 .blog-content .author {
     font-size: 0.85rem;
-    color: var(--Ash-gray);
-}
-
-/* Hover Animation for Blog Items */
-.blog-item {
-    background-color: var(--Lemon-chiffon);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+    color: var(--text-muted);
 }
 
 .blog-item:hover {
@@ -141,7 +141,7 @@ header a:hover{
 }
 
 .modal-content {
-    background-color: var(--Alabaster);
+    background-color: var(--white);
     border-radius: 8px;
     width: 80%;
     max-width: 1000px;
@@ -152,24 +152,13 @@ header a:hover{
     padding: 1rem;
 }
 
-
 .close-modal {
     position: absolute;
     top: 1rem;
     right: 1rem;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--Bittersweet);
-}
-
-
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--Bittersweet);
+    color: var(--accent);
 }
 
 @keyframes fadeIn {
@@ -182,13 +171,14 @@ header a:hover{
         transform: translateY(0);
     }
 }
-/* Modal Header weth Background Image */
+
+/* Modal Header with Background Image */
 .modal-header {
     position: relative;
     background-size: cover;
     background-position: center;
     height: 200px;
-    color: var(--Alabaster);
+    color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,27 +187,29 @@ header a:hover{
 
 .modal-header h2 {
     font-size: 2rem;
+    color: var(--white);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 1rem;
     border-radius: 5px;
 }
+
 /* Modal Body */
 .modal-body {
     padding: 2rem;
     font-size: 1rem;
-    color: var(--Ash-gray);
+    color: var(--text-dark);
     text-align: left;
     line-height: 1.6;
 }
 .modal-body p {
     margin-bottom: 1rem;
-    color: var(--Verdigris);
+    color: var(--text-dark);
 }
 
 /* Newsletter Section */
 .newsletter-section {
-    background-color: var(--Verdigris);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     padding: 2rem 1rem;
     text-align: center;
     border-radius: 15px;
@@ -251,8 +243,8 @@ header a:hover{
 
 .newsletter-form button {
     padding: 0.8rem 2rem;
-    background-color: var(--Bittersweet);
-    color: var(--Alabaster);
+    background-color: var(--accent);
+    color: var(--white);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -260,16 +252,15 @@ header a:hover{
 }
 
 .newsletter-form button:hover {
-    background-color: var(--darkBittersweet);
+    background-color: var(--accent-dark);
 }
 
 /* Footer */
 footer {
-    background-color: var(--Bittersweet);
-    color: var(--Alabaster);
+    background-color: var(--primary);
+    color: var(--white);
     padding: .5rem;
     text-align: center;
-
 }
 .footer-content {
     display: flex;
@@ -278,11 +269,9 @@ footer {
 }
 .social-icons a {
     margin: 0 0.5rem;
-    color: var(--Alabaster);
+    color: var(--white);
     font-size: 1.5rem;
 }
 .social-icons a:hover {
-    color: var(--Lemon-chiffon);
+    color: var(--accent);
 }
-
-

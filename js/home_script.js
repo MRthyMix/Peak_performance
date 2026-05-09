@@ -1,55 +1,45 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const carouselButtons = document.querySelectorAll('.carousel-btn');
     const heroSection = document.getElementById('hero-section');
-
-    // Array of images
-    const images = [
-        'images/fitness_banner.png',
-        'images/fitness_banner_2.png',
-        'images/fitness_banner_3.png'
-    ];
+    const slides = heroSection.querySelectorAll('.hero-slide');
+    const carouselButtons = document.querySelectorAll('.carousel-btn');
 
     let currentSlide = 0;
-    const totalSlides = images.length;
-    const slideIntervalTime = 5000;
     let slideInterval;
 
+    const goToSlide = (index) => {
+        if (index === currentSlide) return;
 
-    const changeSlide = (index) => {
+        // Drop old slide back (stays visible at z-index 1, no animation)
+        slides[currentSlide].classList.remove('active');
+        carouselButtons[currentSlide].classList.remove('active');
+
         currentSlide = index;
-        heroSection.style.backgroundImage = `url('${images[currentSlide]}')`;
 
-        // Update the active class on buttons
-        carouselButtons.forEach(btn => btn.classList.remove('active'));
+        // Force animation to restart by removing/re-adding class
+        const slide = slides[currentSlide];
+        slide.classList.remove('active');
+        void slide.offsetWidth; // flush style so animation resets
+        slide.classList.add('active');
+
         carouselButtons[currentSlide].classList.add('active');
     };
 
-    // Function to go to the next slide
-    const nextSlide = () => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        changeSlide(currentSlide);
-    };
+    const nextSlide = () => goToSlide((currentSlide + 1) % slides.length);
 
+    slideInterval = setInterval(nextSlide, 5000);
 
-    slideInterval = setInterval(nextSlide, slideIntervalTime);
-
-    // Add click event listeners to each button
-    carouselButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
+    carouselButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
             clearInterval(slideInterval);
-            changeSlide(index);
-            slideInterval = setInterval(nextSlide, slideIntervalTime);
+            goToSlide(index);
+            slideInterval = setInterval(nextSlide, 5000);
         });
     });
 
-    //Pause on hover
-    heroSection.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-
+    heroSection.addEventListener('mouseenter', () => clearInterval(slideInterval));
     heroSection.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, slideIntervalTime);
+        slideInterval = setInterval(nextSlide, 5000);
     });
 });
