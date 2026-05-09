@@ -57,7 +57,7 @@ Peak_performance/
 ## Local Development
 
 1. Get a free USDA API key at [fdc.nal.usda.gov/api-guide.html](https://fdc.nal.usda.gov/api-guide.html)
-2. Create `js/config.js` (already gitignored):
+2. Create `js/config.js`:
    ```js
    window.API_CONFIG = {
        USDA_API_KEY: "your-key-here"
